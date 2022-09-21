@@ -16,7 +16,9 @@ GOOS=linux go build -ldflags="-w -s"
 ### 使用方法：
 
 ```
-1、添加jvm参数，当应用发生OOM时会自动执行工具"-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/dumps/oom -XX:+ExitOnOutOfMemoryError -XX:OnOutOfMemoryError=./dump-handler -k \$HOSTNAME -e \$ENV"
+1、添加jvm参数，当应用发生OOM时会自动执行工具"-XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/dumps/oom -XX:+ExitOnOutOfMemoryError \ 
+-XX:OnOutOfMemoryError=./dump-handler -k \$HOSTNAME -e \$ENV -ka saas -prom 10.150.30.6:9090 -cosurl https://XXXXXX.cos.XXXXXXX.com \
+-secret XXXXX -secretkey XXXX"
 2、部署应用到k8s时在deployment配置挂载emptyDir的volume目录"/dumps"
 ```
 
